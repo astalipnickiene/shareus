@@ -1,0 +1,111 @@
+package project;
+import java.util.Scanner;
+public class Product {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		// Declare user to choose a car size/type from three
+		
+		int choice; 
+		// Make that program repeat search if user chooses 2 in the last question
+		while (true){
+	
+			// Display a menu and ask user to choose one of the menu
+			do{
+			
+				// Read a user input
+				choice = getMenuResult1(input);
+			
+				// use a switch to select based on the choice
+				switch (choice){
+					case 1: System.out.println("1. the price range of small cars is from 50 - 100 dkk/day."); break;
+					case 2: System.out.println("2. the price range of average cars is from 100 - 200 dkk/day."); break;
+					case 3: System.out.println("3. the price range of big cars is from 200 - 400 dkk/day. "); break;
+					default: System.out.println("Incorrect input, please select the size of the car"); break;
+				}
+			
+				// when choice is not 1, 2 or 3 the loop should continue
+			}
+			while (choice !=1 && choice !=2 && choice !=3);
+			
+			int carType = choice; 
+			String carSize = "";
+			int carPriceMin = 0;
+			int carPriceMax = 0;
+			
+			System.out.println("How many days do you need it?");
+			choice = input.nextInt();
+			
+			switch (carType){
+			// Declare minimum and maximum prices in each selected case and the size of the car
+				case 1: 
+					carSize = "small"; 
+					carPriceMin = 50;
+					carPriceMax = 100; 
+					break;
+				case 2:
+					carSize = "average";
+					carPriceMin = 100;
+					carPriceMax = 200; 
+					break;
+				case 3:
+					carSize = "big";
+					carPriceMin = 200;
+					carPriceMax = 400; 
+					break;
+			}
+			// Print out the final decision and preliminary calculation
+			System.out.println("The preliminary price of a " + carSize + "car is " + carPriceMin * choice + " - " + carPriceMax * choice );	
+			
+			// Let user choose the further step - search again, exit, proceed to search results
+			do{
+				System.out.println("Click 1,2 or 3 to proceed"); 
+				System.out.println("1. Proceed to search results."); 
+				System.out.println("2. Search again"); 
+				System.out.println("3. Exit the program."); 
+			
+				choice = input.nextInt();
+			} 
+			while (choice !=1 && choice !=2 && choice !=3);
+			
+			if (choice==1) {
+				System.out.println("1. Here are your search results"); 
+				break; 
+			} 
+			else if (choice==2) {
+				System.out.println("2. Search again: ... ");
+				continue;
+			}
+			else {
+				System.out.println("3. You closed the program now. ");
+				System.exit(0);
+			}
+		}
+		
+		//Here we continue to search results
+		//Read from file, etc.
+	
+	}
+	
+	public static int getMenuResult1 (Scanner input){
+		
+		System.out.println("Please select the size of the car you need: 1, 2 or 3");
+		System.out.println( "1. I need a small car for 2-3 people or similar");
+		System.out.println( "2. I need an average family car with 5-6 seats or similar");
+		System.out.println( "3. I need a big car/van or similar");
+	
+		// Read a user input
+		int choice = input.nextInt();
+		return choice;
+		
+	}
+}
+	
+	
+
+		
+
+	
+
+
